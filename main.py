@@ -19,7 +19,7 @@ DB_PASS = "silentgee1616"
 # connecting to our database
 conn = psycopg2.connect(dbname = DB_NAME, user = DB_USER, password = DB_PASS, host = DB_HOST)
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("https://clark-web.herokuapp.com//", methods=["POST", "GET"])
 def login():
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 
