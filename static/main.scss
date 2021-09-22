@@ -1,0 +1,245 @@
+$colors: (
+    primary: #ffce00,
+    secondary: #fe4880,
+    accent: #4c4141,
+);
+$padding: 15px;
+$borders: 15px;
+
+@function color($color_name) {
+    @return map-get($colors, $color_name)
+}
+
+// for desktop pexil orientation
+$desktop: 840px;
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: Montserrat Alternates;
+    margin: 0;
+    //background-color: map-get($colors, secondary);
+    background: url(bdback1.jpg) center;
+    background-size: 100%;
+
+    // For login page
+    h4 {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .login-card {
+        width: 270px;
+        margin: 1em auto;
+        align-items: center;
+        background-color: rgba(139, 139, 139, 0.15); // were chinging this to image
+        border-radius: 5%;
+        padding-top: 10px;
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-bottom: 10px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+    }
+    .btn-login {
+        border-color: map-get($colors, primary);
+        border-width: 1px;
+        color: map-get($colors, primary);
+        transition: 0.2s;
+    }
+    .btn-login:hover {
+        background-color: map-get($colors, primary);
+        color: #000;
+    }
+
+    // For home page
+    .box {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+    .confetti {
+        position: absolute;
+        top: -25px;
+    }
+    .confetti:nth-child(100n+2){
+        animation: animateStart 1.5s ease 1;
+    }
+    .confetti:nth-child(100n+4){
+        animation: animateStart 1.4s ease 1;
+    }
+    .confetti:nth-child(100n+0){
+        animation: animateStart 1.6s ease 1;
+    }
+    @keyframes animateStart {
+        0% {
+            top: 100%;
+            left: 50%;
+            box-shadow: 0 0 5px #000;
+        }
+        100% {
+            transform: rotate3d(1, 1, 1, 360deg);
+            top: -100%;
+        }
+    }
+    // falling animation
+    .confetti:nth-child(100n+0){
+        animation: animateThree 3.4s linear 0.5s 3;
+    }
+    .confetti:nth-child(100n+1){
+        animation: animate 4s linear 3;
+    }
+    .confetti:nth-child(100n+3){
+        animation: animate 4.2s linear 0.5s 3;
+    }
+    .confetti:nth-child(100n+5){
+        animation: animateTwo 3s linear 0.5s 3;
+    }
+    .confetti:nth-child(100n+6){
+        animation: animateTwo 2.9s linear 0.5s 3;
+    }
+    .confetti:nth-child(100n+7){
+        animation: animate 2.8s linear 0.5s 3;
+    }
+    .confetti:nth-child(100n+8){
+        animation: animate 2.7s linear 0.5s 3;
+    }
+    .confetti:nth-child(100n+9){
+        animation: animate 2.6s linear 0.5s 3;
+    }
+    .confetti:nth-child(100n+10){
+        animation: animate 2.5s linear 0.5s 3;
+    }
+    
+    @keyframes animate {
+        0% {
+            top: -100px;
+        }
+        100% {
+            transform: rotate3d(1, 1, 1, 360deg);
+            top: 100px;
+        }
+    }
+    @keyframes animateTwo {
+        0% {
+            top: -100px;
+        }
+        100% {
+            transform: rotate3d(0, 0, 1, 360deg);
+            top: 100px;
+        }
+    }
+    @keyframes animateThree {
+        0% {
+            top: -100px;
+        }
+        100% {
+            transform: rotate3d(0, 1, 0, 360deg);
+            top: 100px;
+        }
+    }
+
+    nav {
+        background-image: linear-gradient(to bottom right, map-get($colors, primary), map-get($colors, secondary));
+    }
+    .card {
+        margin: 30px auto 0;
+        width: 300px;
+        height: 300px;
+        background: url(bdback1.jpg) center no-repeat;
+        border: 0px;
+        border-radius: 16px;
+    }
+    .card-inner {
+        width: 100%;
+        height: 100%;
+        transition: transform 1s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        position: relative;
+    }
+    .card-inner:hover { // is-flipped is a javascript
+        transform: rotateY(180deg);
+    }
+    .card-face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+    }
+    .card-face-front {
+        background-image: linear-gradient(to bottom right, map-get($colors, primary), map-get($colors, secondary));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card-face-front h2 {
+        color: #fff;
+        font-size: 32px;
+    }
+    .card-face-back {
+        background-color: #fff;
+        transform: rotateY(180deg);
+    }
+    .card-content {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 0 0 30% 0;
+        background-image: linear-gradient(to bottom left, map-get($colors, primary) 10%, map-get($colors, secondary) 115%);
+    }
+    .card-header {
+        position: relative;
+        padding: 10px 10px 10px;
+    }
+    .card-header:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        border-radius: 0 0 50% 0;
+        background-image: linear-gradient(to bottom left, map-get($colors, primary) 10%, map-get($colors, secondary) 115%);
+    }
+    .pic {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .pic-small {
+        width: 280px;
+        height: 280px;
+        border-radius: 15px;
+        box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.2);
+    }
+    .pic-small:hover {
+        transform: scale(1.1);
+        transition: 1s;
+    }
+}

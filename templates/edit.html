@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}User Edit Page{% endblock title %}
+
+{% block content %} 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="/update/{{ user.user_id }}" method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" class="form-control" value="{{ user.username }}" name="username" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" value="{{ user.passwords }}" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

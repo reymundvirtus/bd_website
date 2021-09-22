@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block title %}Gallery{% endblock title %}
+
+{% block content %} 
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome {{ user }} in the Gallery!</a>
+            <a href="/home" class="btn-login btn">Back</a>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <center><br>
+        <div class="row">
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/1.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/1.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/2.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/2.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/3.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/3.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/4.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/4.jpeg') }}" class="pic-small"></a>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/5.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/5.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/6.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/6.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/7.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/7.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/8.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/8.jpeg') }}" class="pic-small"></a>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/9.gif') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/9.gif') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/10.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/10.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/11.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/11.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/12.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/12.jpeg') }}" class="pic-small"></a>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/13.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/13.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/14.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/14.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/15.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/15.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/16.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/16.jpeg') }}" class="pic-small"></a>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/17.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/17.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/18.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/18.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/19.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/19.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="{{ url_for('static', filename='images/Gallery/20.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/20.jpeg') }}" class="pic-small"></a>
+            </div>
+        </div><br>
+        <div class="row">
+            <div class="col-lg-4">
+                <a href="{{ url_for('static', filename='images/Gallery/21.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/21.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-4">
+                <a href="{{ url_for('static', filename='images/Gallery/22.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/22.jpeg') }}" class="pic-small"></a>
+            </div>
+            <div class="col-lg-4">
+                <a href="{{ url_for('static', filename='images/Gallery/23.jpeg') }}">
+                    <img src="{{ url_for('static', filename='images/Gallery/23.jpeg') }}" class="pic-small"></a>
+            </div>
+        </div>
+        </center>
+    </div>
+{% endblock content %}

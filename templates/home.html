@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Home Page{% endblock title %}
+
+{% block content %}
+
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Welcome {{ user }}!</a>
+            <a href="/gallery" class="btn-login btn">Go to Gallery-></a>
+            <a href="/logout" class="btn-login btn">Logout</a>
+        </div>
+    </nav>
+    
+    <!--<span class="box" id="box"></span>-->
+
+    <div class="container">
+        <div class="row">
+            {% for post in list_post %}
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-inner">
+                            <div class="card-face card-face-front">
+                                <img src="static/images/{{ post.picture }}" class="pic">
+                            </div>
+                            <div class="card-face card-face-back">
+                                <div class="card-content">
+                                    <!--<div class="card-header">
+                                        <h2>Reymund Virtus</h2>
+                                    </div>-->
+                                    <div class="card-body">
+                                        <!--<h3>Javascript</h3>-->
+                                        <p>{{ post.messages }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div><br>
+    
+{% endblock content %}
