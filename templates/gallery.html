@@ -4,7 +4,7 @@
 {% block content %} 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Welcome {{ user }} in the Gallery!</a>
+            <a class="navbar-brand" href="#">Welcome Visitors!</a>
             <a href="/home" class="btn-login btn">Back</a>
         </div>
     </nav>
@@ -114,7 +114,7 @@
                 <a href="{{ url_for('static', filename='images/Gallery/23.jpeg') }}">
                     <img src="{{ url_for('static', filename='images/Gallery/23.jpeg') }}" class="pic-small"></a>
             </div>
-        </div>
+        </div><br>
         </center>
     </div>
 {% endblock content %}
