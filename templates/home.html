@@ -20,15 +20,11 @@
                     <div class="card">
                         <div class="card-inner">
                             <div class="card-face card-face-front">
-                                <img src="static/images/{{ post.picture }}" class="pic">
+                                <img src="{{ url_for('static', filename='images/' + post.picture) }}" class="pic">
                             </div>
                             <div class="card-face card-face-back">
                                 <div class="card-content">
-                                    <!--<div class="card-header">
-                                        <h2>Reymund Virtus</h2>
-                                    </div>-->
                                     <div class="card-body">
-                                        <!--<h3>Javascript</h3>-->
                                         <p>{{ post.messages }}</p>
                                     </div>
                                 </div>
