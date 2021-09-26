@@ -11,10 +11,10 @@ app.secret_key = "erghweuigh8uh58/;["
 app.permanent_session_lifetime = timedelta(days = 1)
 
 # for our database
-DB_HOST = "localhost"
-DB_NAME = "bd_websitedb"
-DB_USER = "postgres"
-DB_PASS = "silentgee1616"
+DB_HOST = "ec2-23-20-208-173.compute-1.amazonaws.com"
+DB_NAME = "d5b9rorljp2j3e"
+DB_USER = "wurwzcfnspyghv"
+DB_PASS = "4833e270417065f7bfb8bfcf6c12e44e3f4c64b7e47293dd7acbe9c2f6489632"
 
 # connecting to our database
 conn = psycopg2.connect(dbname = DB_NAME, user = DB_USER, password = DB_PASS, host = DB_HOST)
