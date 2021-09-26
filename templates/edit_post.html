@@ -2,6 +2,13 @@
 {% block title %}Update Post Page{% endblock title %}
 
 {% block content %} 
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Edit Post</a>
+            <a href="/admin" class="btn-login btn">Back</a>
+        </div>
+    </nav><br>
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12"><br>
@@ -9,7 +16,7 @@
                     <dl>
                         <p>
                             <label class="form-label">Upload Image</label>
-                            <input type="file" name="file" value="{{ post.picture }}" class="form-control" autocomplete="off">
+                            <input type="file" name="file" value="{{ url_for('static', filename='images/' + post.picture) }}" class="form-control" autocomplete="off">
                         </p>
                     </dl>
                     <div class="mb-3">

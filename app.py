@@ -29,31 +29,38 @@ def login():
         password = request.form["password"]
         session["home"] = username
         session["admin"] = username
+        cur.execute("BEGIN")
         cur.execute("SELECT * FROM users WHERE username = %s", (username,))
         account = cur.fetchone()
         if account:
             passwords = account["passwords"]
             usernames = account[1]
             if username == "admin" and password == passwords:
-                return redirect((url_for("admin")))
+                return redirect(url_for("admin"))
             elif password == passwords:
                 return redirect(url_for("home"))
             else:
                 flash("Username or Password is incorrect!")
         else:
             flash("This account is not existing!")
-
+    else:
+        if "admin" in session:
+            redirect(url_for("admin"))
+        elif "home" in session:
+            redirect(url_for("home"))
+    
     return render_template("login.html")
 
 
 @app.route("/home")
 def home():
     if "home" in session:
+        user = session["home"]
         cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        cur.execute("BEGIN")
         s = "SELECT * FROM posts"
         cur.execute(s) # execute the query
         list_post = cur.fetchall()
-        user = session["home"]
         return render_template("home.html", user = user, list_post = list_post)
     else:
         return redirect(url_for("login"))
@@ -62,7 +69,9 @@ def home():
 @app.route("/admin")
 def admin():
     if "admin" in session:
+        user = session["admin"]
         cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        cur.execute("BEGIN")
         s = "SELECT * FROM users"
         cur.execute(s) # execute the query
         list_user = cur.fetchall()
@@ -74,7 +83,6 @@ def admin():
         list_id = cur.fetchall()
         ad_id = list_id[0][0]
 
-        user = session["admin"]
         return render_template("admin.html", user = user, list_user = list_user, list_post = list_post, ad_id = ad_id)
     else:
         return redirect(url_for("login"))
@@ -86,6 +94,7 @@ def get_user(user_id):
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 
     # for editing users
+    cur.execute("BEGIN")
     cur.execute("SELECT * FROM users WHERE user_id = %s", (user_id))
     data = cur.fetchall()
     cur.close()
@@ -99,6 +108,7 @@ def update_user(user_id):
         passwords = request.form["password"]
 
         cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+        cur.execute("BEGIN")
         cur.execute("""UPDATE users SET username = %s, passwords = %s WHERE user_id = %s""", (username, passwords, user_id))
         conn.commit()
         return redirect(url_for('admin'))
@@ -110,6 +120,7 @@ def add(user_id):
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 
     # for editing users
+    cur.execute("BEGIN")
     cur.execute("SELECT * FROM users WHERE user_id = %s", (user_id))
     data = cur.fetchall()
     cur.close()
@@ -141,6 +152,7 @@ def added_post(user_id):
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             
             messages = request.form["message"]
+            cur.execute("BEGIN")
             cur.execute("INSERT INTO posts (picture, messages, user_id) VALUES (%s, %s, %s)", (filename, messages, user_id))
             conn.commit()
 
@@ -157,6 +169,7 @@ def edit_post(post_id):
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 
     # for editing users
+    cur.execute("BEGIN")
     cur.execute("SELECT * FROM posts WHERE post_id = %s", (post_id))
     data = cur.fetchall()
     cur.close()
@@ -179,6 +192,7 @@ def update_post(post_id):
             
             messages = request.form["message"]
             cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
+            cur.execute("BEGIN")
             cur.execute("""UPDATE posts SET picture = %s, messages = %s WHERE post_id = %s""", (filename, messages, post_id))
             conn.commit()
 
@@ -194,6 +208,7 @@ def update_post(post_id):
 def delete_post(post_id):
     cur = conn.cursor(cursor_factory = psycopg2.extras.DictCursor)
 
+    cur.execute("BEGIN")
     cur.execute("DELETE FROM posts WHERE post_id = {0}".format(post_id))
     conn.commit()
     return redirect(url_for('admin'))
@@ -208,6 +223,7 @@ def gallery():
 @app.route("/logout")
 def logout():
     session.pop("home", None)
+    session.pop("admin", None)
     return redirect(url_for("login"))
 
 

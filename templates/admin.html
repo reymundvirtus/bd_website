@@ -42,7 +42,7 @@
         <tbody>
           {% for post in list_post %}
             <tr>
-              <td>{{ post.picture }}</td>
+              <td><img src="{{ url_for('static', filename='images/' + post.picture) }}" class="pic-admin"></td>
               <td>{{ post.messages }}</td>
               <td>{{ post.user_id }}</td>
               <td>
