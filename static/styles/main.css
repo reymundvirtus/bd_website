@@ -250,3 +250,8 @@ body .pic-small:hover {
   transform: scale(1.1);
   transition: 1s;
 }
+
+body .pic-admin {
+  height: 60px;
+  width: 60px;
+}
