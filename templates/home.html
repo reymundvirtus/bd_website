@@ -3,6 +3,8 @@
 
 {% block content %}
 
+    <audio src="{{ url_for('static', filename='audio/HappyBirthday_Song.mp3') }}" autoplay="true" loop="false" width="2" height="0"></audio>
+
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Happy Birthday {{ user }}!</a>
